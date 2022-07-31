@@ -1,37 +1,3 @@
-// Spotify API credentials
-
-const spotifyClientID = '0d56ba1ca5b844b7886a93fe3c371e20';
-const spotifyClientSecret = '4a910c568b2b4f9796426f7749a3065f';
-
-const getToken = async () => {
-    const request = await fetch('https://accounts.spotify.com/api/token', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Autorization' : 'Basic' + btoa(spotifyClientID + ':' + spotifyClientSecret),
-        },
-        body: 'grant_type=client_credentials'
-    });
-
-    const data = await request.json();
-    console.log('DATA DEL TOKEN');
-    console.log(data);
-    return data.access_token;
-}
-
-const getTrack = async (token, id) => {
-
-    const request = await fetch('https://api.spotify.com/v1/tracks/'+ id, {
-        method: 'GET',
-        headers: {'Authorization': 'Bearer ' + token}
-    });
-
-    const data = await request.json();
-    return data;
-
-}
-
-
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -41,7 +7,6 @@ function reload_content(delay){
     setInterval(async function(){
 
         let user = 'nightd'
-        //console.log(user);
         let url = 'https://api.listenbrainz.org/1/user/' + user + '/playing-now';
 
         let payload = new Map();
@@ -59,17 +24,6 @@ function reload_content(delay){
             jsonRAW = JSON.parse(data);
             jsonFile = new Map(Object.entries(jsonRAW));
 
-            //console.log(getTrack(token, '5HCyWlXZPP0y6Gqq8TgA20'));
-            //console.log(jsonFile);
-            //console.log(getToken());
-            //getToken();
-
-            /*try{
-                console.log(jsonFile.get('payload')['listens'][0]['track_metadata']);
-            }catch{
-                console.log(jsonFile.get('payload')['listens'][0]);
-            }*/
-
             if(jsonFile.get('payload')['listens'].length > 0){
 
                 payload = jsonFile.get('payload');
@@ -78,10 +32,7 @@ function reload_content(delay){
 
                     id = payload['listens'][0]['track_metadata']['additional_info']['origin_url'];
                     id = id.substr(31,100);
-                    link = '/assets/img/logo.png';
-
-                    console.log(id)
-                    console.log(getTrack(getToken(), id));
+                    link = '/assets/img/spotify.png';
 
                 }else{
 
