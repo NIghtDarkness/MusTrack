@@ -32,7 +32,7 @@ function reload_content(delay){
 
                     id = payload['listens'][0]['track_metadata']['additional_info']['origin_url'];
                     id = id.substr(31,100);
-                    link = '/assets/img/spotify.png';
+                    link = 'assets/img/spotify.png';
 
                 }else{
 
