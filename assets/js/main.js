@@ -14,6 +14,7 @@ const getToken = async () => {
     });
 
     const data = await request.json();
+    console.log('DATA DEL TOKEN');
     console.log(data);
     return data.access_token;
 }
@@ -72,7 +73,6 @@ function reload_content(delay){
             if(jsonFile.get('payload')['listens'].length > 0){
 
                 payload = jsonFile.get('payload');
-                console.log(payload['listens'][0]['track_metadata']['additional_info']['music_service_name']);
 
                 if(payload['listens'][0]['track_metadata']['additional_info']['music_service_name'] === 'Spotify'){
 
@@ -81,7 +81,7 @@ function reload_content(delay){
                     link = '/assets/img/logo.png';
 
                     console.log(id)
-                    //console.log(getTrack(getToken(), id));
+                    console.log(getTrack(getToken(), id));
 
                 }else{
 
