@@ -61,7 +61,7 @@ function reload_content(delay){
             //console.log(getTrack(token, '5HCyWlXZPP0y6Gqq8TgA20'));
             //console.log(jsonFile);
             //console.log(getToken());
-            getToken();
+            //getToken();
 
             /*try{
                 console.log(jsonFile.get('payload')['listens'][0]['track_metadata']);
@@ -72,6 +72,7 @@ function reload_content(delay){
             if(jsonFile.get('payload')['listens'].length > 0){
 
                 payload = jsonFile.get('payload');
+                console.log(payload['listens'][0]['track_metadata']['additional_info']['music_service_name']);
 
                 if(payload['listens'][0]['track_metadata']['additional_info']['music_service_name'] === 'Spotify'){
 
