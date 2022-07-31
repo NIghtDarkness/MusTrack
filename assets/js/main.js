@@ -6,20 +6,20 @@ function reload_content(delay){
 
     setInterval(async function(){
 
-        let user = 'nightd'
+        let user = document.getElementsByTagName('input')[0].value;
         let url = 'https://api.listenbrainz.org/1/user/' + user + '/playing-now';
 
         let payload = new Map();
-        let song = {'artist_name':'NO SONG', 'track_name':'Music Tracker', 'img_link':'assets/img/logo.png', 'img_id':'none'};
         let link;
         let id;
         let response = await fetch(url);
         let data;
         let jsonRAW;
         let jsonFile;
+        let song = {'artist_name':'NO SONG - ' + user, 'track_name':'Music Tracker', 'img_link':'assets/img/logo.png', 'img_id':'none'};
             
         if(response.status === 200){
-            document.getElementsByTagName('p')[2].innerText = 'user: ✅';
+            document.getElementsByTagName('p')[3].innerText = '✅';
             data = await response.text();
             jsonRAW = JSON.parse(data);
             jsonFile = new Map(Object.entries(jsonRAW));
@@ -54,11 +54,12 @@ function reload_content(delay){
                 
             }
         }else{
-            document.getElementsByTagName('p')[2].innerText = 'user: ❌';
+            document.getElementsByTagName('p')[3].innerText = '❌';
+            song['artist_name'] = 'NO SONG - NO USER';
         }
         //console.log(response.status);
 
-        if(song['img_id'] != document.getElementsByTagName('img')[0].getAttribute('id')){
+        if(song['artist_name'] != document.getElementsByTagName('p')[1].innerText && song['artist_name'] != null){
             
             document.getElementsByTagName('div')[3].setAttribute('class', 'info animation-in');
             document.getElementsByTagName('div')[2].setAttribute('class', 'frame animation-in');
