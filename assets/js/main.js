@@ -39,7 +39,7 @@ function reload_content(delay){
 
     setInterval(async function(){
 
-        let user = await (await fetch('../../account.dat')).text();
+        let user = 'nightd'
         //console.log(user);
         let url = 'https://api.listenbrainz.org/1/user/' + user + '/playing-now';
 
