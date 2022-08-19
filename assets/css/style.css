@@ -8,6 +8,10 @@ div{
     overflow: hidden;
 }
 
+#warning{
+    color: red;
+}
+
 .container{
     width: 1000px;
     padding: 20px;
