@@ -82,43 +82,64 @@ class Account:
         self.key = StringVar()
 
         Label(self.root, text='     ', bg='#181425',
+              fg='#FFFFFF').grid(row=0, column=0)
+        Label(self.root, text='     ', bg='#181425',
+              fg='#FFFFFF').grid(row=0, column=1)
+        Label(self.root, text='     ', bg='#181425',
+              fg='#FFFFFF').grid(row=0, column=2)
+        Label(self.root, text='     ', bg='#181425',
               fg='#FFFFFF').grid(row=0, column=3)
         Label(self.root, text='     ', bg='#181425',
-              fg='#FFFFFF').grid(row=5, column=3)
+              fg='#FFFFFF').grid(row=0, column=4)
         Label(self.root, text='     ', bg='#181425',
-              fg='#FFFFFF').grid(row=1, column=0)
+              fg='#FFFFFF').grid(row=0, column=5)
         Label(self.root, text='     ', bg='#181425',
-              fg='#FFFFFF').grid(row=1, column=4)
-
-        Label(self.root, text='Username: ', bg='#181425',
-              fg='#FFFFFF').grid(row=1, column=1)
-        Entry(self.root, textvariable=self.username,
-              bg='#494949',  fg='#FFFFFF').grid(row=1, column=2)
-        Label(self.root, text='API Key: ', bg='#181425',
-              fg='#FFFFFF').grid(row=2, column=1)
-        Entry(self.root, textvariable=self.key,
-              bg='#494949',  fg='#FFFFFF').grid(row=2, column=2)
+              fg='#FFFFFF').grid(row=3, column=0)
+        Label(self.root, text='     ', bg='#181425',
+              fg='#FFFFFF').grid(row=3, column=1)
+        Label(self.root, text='     ', bg='#181425',
+              fg='#FFFFFF').grid(row=3, column=2)
+        Label(self.root, text='     ', bg='#181425',
+              fg='#FFFFFF').grid(row=3, column=3)
+        Label(self.root, text='     ', bg='#181425',
+              fg='#FFFFFF').grid(row=3, column=4)
+        Label(self.root, text='     ', bg='#181425',
+              fg='#FFFFFF').grid(row=3, column=5)
 
         if(os.path.exists('C:/Apache24/htdocs/account.json')):
+            Label(self.root, text='     ', bg='#181425',
+                  fg='#FFFFFF').grid(row=0, column=6)
+            Label(self.root, text='     ', bg='#181425',
+                  fg='#FFFFFF').grid(row=3, column=6)
             Deploy = Button(self.root, text='Uninstall',
                             command=self.uninstall)
             Deploy.config(cursor='hand2')
-            Deploy.grid(row=4, column=2, padx=10)
+            Deploy.grid(row=2, column=1, padx=10)
 
             Activate = Button(self.root, text='Start', command=self.activate)
             Activate.config(cursor='hand2')
-            Activate.grid(row=1, column=3, padx=10)
+            Activate.grid(row=2, column=3, padx=10)
 
             Deactivate = Button(self.root, text='Stop',
                                 command=self.deactivate)
             Deactivate.config(cursor='hand2')
-            Deactivate.grid(row=2, column=3, padx=10, pady=10)
+            Deactivate.grid(row=2, column=5, padx=10)
 
         else:
+
+            Label(self.root, text='Username: ', bg='#181425',
+                  fg='#FFFFFF').grid(row=1, column=1)
+            Entry(self.root, textvariable=self.username,
+                  bg='#494949',  fg='#FFFFFF').grid(row=1, column=2)
+            Label(self.root, text='API Key: ', bg='#181425',
+                  fg='#FFFFFF').grid(row=2, column=1)
+            Entry(self.root, textvariable=self.key, bg='#494949',
+                  fg='#FFFFFF').grid(row=2, column=2)
+
             Deploy = Button(self.root, text='Install',
                             command=self.check_connection)
             Deploy.config(cursor='hand2')
-            Deploy.grid(row=4, column=2, padx=10)
+            Deploy.grid(row=4, column=2, padx=10, pady=10)
 
         self.root.mainloop()
 
