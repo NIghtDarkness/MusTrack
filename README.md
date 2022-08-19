@@ -4,13 +4,15 @@ Hello! c:
 
 Youtube music tracker is a small and powerful app to track the music we listen to from youtube music while we stream.
 
-At the moment of this publication, it only supports the youtube music platform, but depending on the support for the application, it may be expanded in the future to support other platforms and even add more styles for the viewer.
 # Instructions
 
-1) Create an account on [ListenBrainz](https://listenbrainz.org/)
-2) Run the Account Manager App.
-3) Enter your username in the text box and press the check button (It must be exactly the same as it appears in [ListenBrainz](https://listenbrainz.org/)).
-4) Copy the directory of the index.html in a browser type source in OBS.
+1) Create an account on [LastFM](https://www.last.fm/es/)
+2) Create an API account [LastFM-API](https://www.last.fm/api/account/create)
+    ![API Instructions](/images/lastfmapi.png)
+
+3) Run the Account Manager App.
+4) Enter your username in the text box and press the check button (It must be exactly the same as it appears in [LastFM](https://www.last.fm/es/)).
+5) Copy the directory of the index.html in a browser type source in OBS.
 ### Enjoy!
 
 ### Note
