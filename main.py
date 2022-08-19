@@ -7,7 +7,7 @@ import sys
 
 class Account:
     def __init__(self):
-        self.filename = 'account.dat'
+        self.filename = 'account.json'
 
     def verified(self):
         self.info = Tk()
@@ -43,8 +43,8 @@ class Account:
 
     def write_file(self):
         file = open(self.filename, 'w')
-        file.write(self.username.get() + '\n')
-        file.write(self.key.get())
+        file.write('{\n\t"key":"' + self.key.get() +
+                   '",\n\t"user":"' + self.username.get() + '"\n}')
         file.close()
 
     def check_connection(self):
