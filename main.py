@@ -43,9 +43,6 @@ class Account:
         self.info.mainloop()
 
     def write_file(self):
-
-        os.system('cd C:\Apache24\\bin && httpd.exe -k install')
-
         file = open(self.filename, 'w')
         file.write('{\n\t"key":"' + self.key.get() +
                    '",\n\t"user":"' + self.username.get() + '"\n}')
@@ -56,6 +53,8 @@ class Account:
             'http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=' + self.username.get() + '&api_key=' + self.key.get() + '&limit=1&format=json')
         if (r.status_code == 200):
             self.write_file()
+            self.install()
+            self.activate()
             self.verified()
         else:
             self.failed()
@@ -65,6 +64,9 @@ class Account:
 
     def deactivate(self):
         os.system('net stop Apache2.4')
+
+    def install(self):
+        os.system('cd C:\Apache24\\bin && httpd.exe -k install')
 
     def uninstall(self):
         os.system(
