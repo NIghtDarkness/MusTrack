@@ -12,17 +12,9 @@ MusTrack is a small and powerful app to track the music we listen to from Youtub
 
 # Instructions
 
-## Local Plugin
-
-1) Create an account on [LastFM](https://www.last.fm/es/)
-2) Create an API account [LastFM-API](https://www.last.fm/api/account/create) and fill the boxes.
-
-    ![API Instructions](/images/lastfmapi.png)
-
-
-3) Open Account Manager.exe and register your account and API key.
-4) Link your LastFM account to Web Scrobbler app or LastFM scrobbler.
-5) Copy this "https://logalhost" and paste in a browser type source in OBS (without quotation marks).
+1) Open the app.
+2) Fill the boxes.
+3) click check.
 
 ### Enjoy!
 
