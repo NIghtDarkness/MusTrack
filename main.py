@@ -3,11 +3,12 @@ from tkinter import *
 from tkinter import messagebox
 import requests
 import sys
+import os
 
 
 class Account:
     def __init__(self):
-        self.filename = 'account.json'
+        self.filename = 'C:/Apache24/htdocs/account.json'
 
     def verified(self):
         self.info = Tk()
@@ -42,6 +43,9 @@ class Account:
         self.info.mainloop()
 
     def write_file(self):
+
+        os.system('cd C:\Apache24\\bin && httpd.exe -k install')
+
         file = open(self.filename, 'w')
         file.write('{\n\t"key":"' + self.key.get() +
                    '",\n\t"user":"' + self.username.get() + '"\n}')
@@ -55,6 +59,16 @@ class Account:
             self.verified()
         else:
             self.failed()
+
+    def activate(self):
+        os.system('net start Apache2.4')
+
+    def deactivate(self):
+        os.system('net stop Apache2.4')
+
+    def uninstall(self):
+        os.system(
+            'del C:\Apache24\htdocs\\account.json && cd C:\Apache24\\bin && httpd.exe -k uninstall')
 
     def run(self):
 
@@ -84,9 +98,27 @@ class Account:
               fg='#FFFFFF').grid(row=2, column=1)
         Entry(self.root, textvariable=self.key,
               bg='#494949',  fg='#FFFFFF').grid(row=2, column=2)
-        Deploy = Button(self.root, text='Check', command=self.check_connection)
-        Deploy.config(cursor='hand2')
-        Deploy.grid(row=2, column=3, padx=10)
+
+        if(os.path.exists('C:/Apache24/htdocs/account.json')):
+            Deploy = Button(self.root, text='Uninstall',
+                            command=self.uninstall)
+            Deploy.config(cursor='hand2')
+            Deploy.grid(row=4, column=2, padx=10)
+
+            Activate = Button(self.root, text='Start', command=self.activate)
+            Activate.config(cursor='hand2')
+            Activate.grid(row=1, column=3, padx=10)
+
+            Deactivate = Button(self.root, text='Stop',
+                                command=self.deactivate)
+            Deactivate.config(cursor='hand2')
+            Deactivate.grid(row=2, column=3, padx=10, pady=10)
+
+        else:
+            Deploy = Button(self.root, text='Install',
+                            command=self.check_connection)
+            Deploy.config(cursor='hand2')
+            Deploy.grid(row=4, column=2, padx=10)
 
         self.root.mainloop()
 
