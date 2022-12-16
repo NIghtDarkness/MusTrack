@@ -18,6 +18,12 @@ div{
     display: flex;
 }
 
+.hidden{
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+}
+
 .album{
     height: 200px;
     width: 200px;
@@ -84,6 +90,8 @@ div{
 
 .artist{
     height: 40px;
+    min-width: 500px;
+    max-width: 500px;
     align-items: center;
     display: flex;
     justify-content: center;

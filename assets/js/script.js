@@ -26,7 +26,11 @@ function reload_content(delay) {
         if(response.status === 200) {
 
             data = await response.json();
-            //console.log(data);
+            
+            
+            if(url_params.get("debug") == "true") {
+                console.log(data);
+            }
 
             if(data["payload"]["listens"].length < 1) {
 
@@ -101,7 +105,16 @@ function reload_content(delay) {
             }
         }
 
-        if(song["artist_name"] != document.getElementsByTagName("span")[1].innerText && song["artist_name"] != null) {
+        if(url_params.get("debug") == "true") {
+            console.log(song["artist_name"]);
+            console.log(song["track_name"]);
+        }
+
+        if(song["artist_name"] != document.getElementsByTagName("span")[3].innerText || song["track_name"] != document.getElementsByTagName("span")[2].innerText) {
+
+            if(song["artist_name"] != document.getElementsByTagName("span")[1].innerText){
+                console.log("webo");
+            }
 
             document.getElementsByClassName("info")[0].classList.replace("animation-out", "animation-in");
             await sleep(20);
@@ -118,17 +131,19 @@ function reload_content(delay) {
             document.getElementsByTagName("img")[2].setAttribute("src", song["platform"]);
             document.getElementsByTagName("span")[0].innerText = song["track_name"];
             document.getElementsByTagName("span")[1].innerText = song["artist_name"];
+            document.getElementsByTagName("span")[2].innerText = song["track_name"];
+            document.getElementsByTagName("span")[3].innerText = song["artist_name"];
 
             if(song["track_name"].length > 28) {
                 document.getElementsByTagName("span")[0].setAttribute("class", "text animate");
-                document.getElementsByTagName("span")[0].innerText = song["track_name"] + song["track_name"] + song["track_name"];
+                document.getElementsByTagName("span")[0].innerText = song["track_name"] + " " + song["track_name"] + " " + song["track_name"];
             } else {
                 document.getElementsByTagName("span")[0].setAttribute("class", "text");
             }
 
             if(song["artist_name"].length > 28) {
                 document.getElementsByTagName("span")[1].setAttribute("class", "text2 animate");
-                document.getElementsByTagName("span")[1].innerText = song["artist_name"] + song["artist_name"] + song["artist_name"];
+                document.getElementsByTagName("span")[1].innerText = song["artist_name"] + " " + song["artist_name"] + " " + song["artist_name"];
             } else {
                 document.getElementsByTagName("span")[1].setAttribute("class", "text2");
             }
